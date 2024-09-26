@@ -8,11 +8,20 @@ terraform {
   }
 }
 
+
+data "databricks_node_type" "smallest" {
+  local_disk = true
+}
+
+data "databricks_spark_version" "latest_lts" {
+  long_term_support = true
+}
+
 # Create a Databricks cluster
 resource "databricks_cluster" "example_cluster" {
   cluster_name            = "example-cluster"
-  spark_version           = "7.3.x-scala2.12"
-  node_type_id            = "Standard_DS3_v2"
+  spark_version           = data.databricks_spark_version.latest_lts.id
+  node_type_id            = data.databricks_node_type.smallest.id
   autotermination_minutes = 20
   autoscale {
     min_workers = 1
