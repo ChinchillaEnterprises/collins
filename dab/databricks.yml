@@ -21,10 +21,10 @@ targets:
     mode: production
     workspace:
       host: https://dbc-e6aaca2b-b2b0.cloud.databricks.com
-      # We explicitly specify /Users/soroush@chinchilla-ai.com to make sure we only have a single copy.
-      root_path: /Users/soroush@chinchilla-ai.com/.bundle/${bundle.name}/${bundle.target}
+      # We explicitly specify /Users/abelino.chinchilla@gmail.com to make sure we only have a single copy.
+      root_path: /Users/abelino.chinchilla@gmail.com/.bundle/${bundle.name}/${bundle.target}
     permissions:
-      - user_name: soroush@chinchilla-ai.com
+      - user_name: abelino.chinchilla@gmail.com
         level: CAN_MANAGE
     run_as:
-      user_name: soroush@chinchilla-ai.com
+      user_name: abelino.chinchilla@gmail.com
