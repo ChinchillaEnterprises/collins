@@ -1,0 +1,15 @@
+resources:
+  clusters:
+    all_purpose_cluster:
+      name: All Purpose Cluster
+      spark_version: 15.4.x-scala2.12
+      node_type_id: i3.xlarge
+      autotermination_minutes: 60
+      autoscale:
+        min_workers: 1
+        max_workers: 4
+      spark_conf:
+        spark.databricks.cluster.profile: singleNode
+        spark.master: local[*]
+      custom_tags:
+        ResourceClass: SingleNode

@@ -1,0 +1,23 @@
+# The main job for dab.
+resources:
+  jobs:
+    dab_job:
+      name: dab_job
+
+      trigger:
+        # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
+        periodic:
+          interval: 1
+          unit: DAYS
+
+      email_notifications:
+        on_failure:
+          - abelino.chinchilla@gmail.com
+
+      tasks:
+        - task_key: notebook_task
+          existing_cluster_id: ${resources.clusters.all_purpose_cluster.id}
+          notebook_task:
+            notebook_path: ../src/notebook.ipynb
+
+      # The job_clusters section has been removed
